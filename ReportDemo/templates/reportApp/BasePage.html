@@ -28,14 +28,17 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Markytics</h3>
+          <div class="media">
+            <img src="https://media.glassdoor.com/sqll/322533/tangentia-squarelogo-1563899142807.png" style="width:60px;height:60px;" class="mr-3" alt="...">
+            <div class="media-body">
+              <h2 class="mt-0">  <strong> Markytics </strong></h2>
+
+              </div>
+          </div>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
 
-            <a href="{% url 'basepage' %}" class="btn btn-outline-light text-dark" >Home</a>
-            <br>
             <a href="{% url 'reportApp:dashboard' %}" class="btn btn-outline-light text-dark" >Dashboard</a>
 
             <h6> <strong>Components</strong></h6>
@@ -59,37 +62,42 @@
             </li>
             <h6> <strong>Authentication</strong> </h6>
 
+            {% if user.is_authenticated %}
             <li>
-                <a href="#">Login</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
+
+
+            {% else %}
             <li>
-                <a href="#">Register</a>
+                <a href="{% url 'reportApp:login' %}" class='login_button'>Login</a>
+            </li>
+            {% endif %}
+
+
+            <li>
+                <a href="{% url 'reportApp:register' %}">Register</a>
             </li>
         </ul>
     </nav>
 
     <div id="content">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
 
-        {% block bodyblock %}
-          <h1>BasePage</h1>
-        {% endblock %}
+      <div class="container">
+        <div class="jumbotron"  style=" background-color: white; align-items: center; width: 1114px; height: auto; "  >
+          {% block bodyblock %}
+            <h1>BasePage</h1>
+
+            {% endblock %}
+        </div>
+
 
       </div>
-  </nav>
-</div>
+
+    </div>
 
 
-
-
-
-</div>
-
-
-
-
-
+  </div>
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -99,5 +107,6 @@
      <!-- Bootstrap JS -->
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
+     <script src="{% static 'js/basepage.js' %}" charset="utf-8"></script>
   </body>
 </html>

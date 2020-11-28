@@ -5,5 +5,21 @@
 {% block bodyblock %}
 
   <h2>User Registration</h2>
-  
+  <br>
+  <form  method="POST">
+    {% csrf_token %}
+
+    <p>First Name: {{ form.first_name }}</p>
+    <br>
+    <p>Last Name: {{ form.last_name }}</p>
+    <br>
+    <p>Email: {{ form.email }}</p>
+    <br>
+    <p>Username: {{ form.username }}</p>
+    <br>
+    <p>Password: {{ form.password }}</p>
+
+    <input type="submit" class="btn btn-outline-dark" name="" value="Register">
+  </form>
+
 {% endblock %}

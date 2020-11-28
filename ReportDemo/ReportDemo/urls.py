@@ -21,6 +21,7 @@ from reportApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^$',views.BasePage,name='basepage'),
+    url('^$',views.Dashboard,name='basepage'),
     url('^Dashboard/',include('reportApp.urls')),
+    url('^Logout/',views.Logout,name='logout'),
 ]

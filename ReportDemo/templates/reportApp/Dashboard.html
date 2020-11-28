@@ -4,6 +4,16 @@
 {% block bodyblock %}
 
   <h2>Dashboard</h2>
+  {% if user.is_authenticated %}
+    <p> Welcome {{ user }}</p>
+
+  {% else %}
+    <p>Please Sign In</p>
+    <p>or Register today to raise an Incident!</p>
+    <p>Thank You</p>
+
+
+  {% endif %}
 
 
 {% endblock %}
