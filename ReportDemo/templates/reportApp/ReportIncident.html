@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'reportApp/BasePage.html' %}
+{% load static %}
+
+{% block bodyblock %}
+  <h1>Report Incident</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ report.as_p }}
+    <input type="submit" name="" value="Report">
+  </form>
+
+{% endblock %}

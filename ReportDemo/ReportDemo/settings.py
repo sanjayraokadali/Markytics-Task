@@ -111,7 +111,6 @@ PASSWORD_HASHERS = [
 ]
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -131,3 +130,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
+
+LOGIN_URL = '/reportApp/Login'

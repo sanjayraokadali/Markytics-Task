@@ -6,7 +6,7 @@ app_name = 'reportApp'
 urlpatterns = [
 
     url('^$',views.Dashboard,name='dashboard'),
-    url('^Login/$',views.Login,name='login'),
     url('^Register/$',views.Register,name='register'),
+    url('^Login/ReportIncident/$',views.ReportIncident,name='reportincident'),
 
 ]

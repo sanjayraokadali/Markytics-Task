@@ -2,9 +2,10 @@ from django.shortcuts import render
 from reportApp.forms import UserRegistrationForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
-
+from reportApp.models import ReportIncidentModel
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from reportApp.forms import ReportIncidentModelForm
 
 # Create your views here.
 def BasePage(request):
@@ -28,12 +29,11 @@ def Register(request):
             user.save()
 
             return Dashboard(request)
+        else:
+            return HttpResponse('Please Try Again!')
 
     return render(request,'reportApp/Register.html',{'form':form})
 
-
-
-    return render(request,'reportApp/Register.html')
 
 def Login(request):
 
@@ -54,7 +54,7 @@ def Login(request):
             return HttpResponseRedirect(reverse('reportApp:dashboard'))
         else:
 
-            return render(request,'reportApp/Login.html',{'message':'Invalid detail! Please Try again.. Are you New? Register with us'})
+            return render(request,'reportApp/Login.html',{'message':'Invalid details! Please Try again...'})
 
     return render(request,'reportApp/Login.html',{'user':username})
 
@@ -68,3 +68,22 @@ def Logout(request):
     logout(request)
 
     return HttpResponseRedirect(reverse('basepage'))
+
+@login_required
+def ReportIncident(request):
+
+    report = ReportIncidentModelForm()
+    if request.method == 'POST':
+
+        report = ReportIncidentModelForm(data = request.POST)
+
+        if report.is_valid():
+
+            report.save()
+
+            return Dashboard(request)
+        else:
+            return HttpResponse('Error!')
+
+
+    return render(request,'reportApp/ReportIncident.html',{'report':report})

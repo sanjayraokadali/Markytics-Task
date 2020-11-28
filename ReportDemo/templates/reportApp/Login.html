@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 {% extends 'reportApp/BasePage.html' %}
+{% load static %}
+
 
 {% block bodyblock %}
 
-  <h4> <strong> Hi there! <br> Welcome Back! <br><br><br> </strong> </h4>
 
-  <form method="POST" >
-    {% csrf_token %}
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput"></label>
-      <input type="text" class="form-control mb-2" name='username' id="inlineFormInput" placeholder="Enter your Username Here">
-    </div>
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Password</div>
-        </div>
-        <input type="password" class="form-control" id="inlineFormInputGroup" name='password' placeholder="Enter your Password Here">
-      </div>
-    </div>
-    <br>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-2">Login</button>
-    </div>
-  </div>
-</form>
 
-  <!-- <form  method="POST">
-    {% csrf_token %}
-    <h4 style=" color:red; "> {{ message }} </h4>
-    <br>
-    <label for="username">Username</label>
-    <input type="username" name="username" placeholder="Enter your username"><br>
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Enter your Password"><br>
-    <input type="submit" class="btn btn-outline-success" name="" value="Login">
-  </form> -->
+    <div class="container">
+        <h4> <strong> Hi there! <br> Welcome Back! <br><br><br> </strong> </h4>
+        <h5 style=" color : red;" > {{ message }} </h5>
+        <form class="form-inline" method="POST">
+          {% csrf_token %}
+
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Username</div>
+            </div>
+            <input type="text" name="username" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter your Username">
+          </div>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Password</div>
+            </div>
+            <input type="password" name="password" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter your password">
+          </div>
+
+
+          <button type="submit" class="btn btn-info mb-2">Login</button>
+        </form>
+        <h6> <strong> If you are a new user, please register <a href="{% url 'reportApp:register' %}" class="btn btn-outline-success"> here</a> </strong> </h6>
+
+
+    </div>
+
+
+
+
+
+
 {% endblock %}

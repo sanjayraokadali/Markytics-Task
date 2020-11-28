@@ -24,4 +24,5 @@ urlpatterns = [
     url('^$',views.Dashboard,name='basepage'),
     url('^Dashboard/',include('reportApp.urls')),
     url('^Logout/',views.Logout,name='logout'),
+    url('^Login/',views.Login,name='login'),
 ]
