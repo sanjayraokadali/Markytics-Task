@@ -54,7 +54,7 @@ def Login(request):
             return HttpResponseRedirect(reverse('reportApp:dashboard'))
         else:
 
-            return render(request,'reportApp/Login.html',{'message':'User Not Found! Please Login'})
+            return render(request,'reportApp/Login.html',{'message':'Invalid detail! Please Try again.. Are you New? Register with us'})
 
     return render(request,'reportApp/Login.html',{'user':username})
 
