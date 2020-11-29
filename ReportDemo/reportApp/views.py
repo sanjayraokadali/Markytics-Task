@@ -71,6 +71,8 @@ def Logout(request):
 
 def ReportIncident(request):
 
+    li = []
+
     if request.method =='POST':
 
         location = request.POST.get('location')
@@ -83,13 +85,18 @@ def ReportIncident(request):
         immediate_action = request.POST.get('immediate_action')
 
         environmental_incident = request.POST.get('environmental_incident')
+        li.append(environmental_incident)
         injury = request.POST.get('injury')
+        li.append(injury)
         property_damaged = request.POST.get('property_damaged')
+        li.append(property_damaged)
         vehicle = request.POST.get('vehicle')
+        li.append(vehicle)
+
 
         report = ReportIncidentModel.objects.create(location = location, incident_department = incident_department,
         date = date, time = time, incident_location = incident_location, initial_severity = initial_severity,
-        suspected_cause = suspected_cause, immediate_action_taken = immediate_action, sub_incident_type = [environmental_incident,injury,property_damaged,vehicle]
+        suspected_cause = suspected_cause, immediate_action_taken = immediate_action, sub_incident_type = li,
         )
 
         report.save()
