@@ -6,7 +6,47 @@
   <h1>Report Incident</h1>
   <form method="POST">
     {% csrf_token %}
-    {{ report.as_p }}
+    <label for="location"> <strong>Location:</strong> </label>
+    <select class="" name="location">
+      <option value="London">London</option>
+      <option value="Edinburgh">Edinburgh</option>
+      <option value="Wale">Wales</option>
+    </select>
+    <br>
+    <label for="incident_department"> <strong>Incident Department: </strong> </label><br>
+    <textarea name="incident_department" rows="4" cols="40"></textarea><br><br>
+    <label for="date">Date:</label>
+    <input type="date" name="date" value="">
+    <label for="time">Time:</label>
+    <input type="time" name="time" value="">
+    <br><br>
+    <label for="incident_location"> <strong> Incident Location:</strong> </label><br>
+    <textarea name="incident_location" rows="4" cols="40"></textarea><br>
+    <label for="initial_severity"> <strong> Initial Severity:</strong> </label>
+    <select class="" name="initial_severity">
+      <option value="Mild">Mild</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Severe">Severe</option>
+      <option value="Fatal">Fatal</option>
+    </select>
+    <br>
+    <label for="suspected_cause"> <strong> Suspected Cause: </strong> </label><br>
+    <textarea name="suspected_cause" rows="4" cols="40"></textarea><br>
+    <label for="immediate_action"> <strong> Immediate Action Taken:</strong> </label><br>
+    <textarea name="immediate_action" rows="4" cols="40"></textarea>
+    <br><br>
+    <label for=""> <strong>Sub-Incident Type: </strong> </label><br>
+    <input type="checkbox" name="environmental_incident" value="Environmental Incident">
+    <label for="environmental_incident">Environmental Incident</label><br>
+    <input type="checkbox" name="injury" value="Injury/Illness">
+    <label for="injury">Injury/Illness</label><br>
+    <input type="checkbox" name="property_damaged" value="Property Damaged">
+    <label for="property_damaged">Property Damaged</label><br>
+    <input type="checkbox" name="vehicle" value="Vehicle">
+    <label for="vehicle">Vehicle</label><br>
+
+
+
     <input type="submit" name="" value="Report">
   </form>
 

@@ -9,7 +9,9 @@ class ReportIncidentModel(models.Model):
 
     incident_department = models.TextField(max_length=300)
 
-    date_time = models.CharField(max_length=20)
+    date = models.CharField(max_length=30)
+
+    time = models.CharField(max_length=30)
 
     incident_location = models.TextField(max_length=100)
 
