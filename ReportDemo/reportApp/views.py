@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from reportApp.models import ReportIncidentModel
+from django.contrib.auth.models import User
 
 # Create your views here.
 def BasePage(request):
@@ -68,8 +69,10 @@ def Logout(request):
 
     return HttpResponseRedirect(reverse('basepage'))
 
-
+@login_required
 def ReportIncident(request):
+
+
 
     li = []
 
@@ -83,7 +86,7 @@ def ReportIncident(request):
         initial_severity = request.POST.get('initial_severity')
         suspected_cause = request.POST.get('suspected_cause')
         immediate_action = request.POST.get('immediate_action')
-
+        username = request.POST.get('username')
         environmental_incident = request.POST.get('environmental_incident')
         li.append(environmental_incident)
         injury = request.POST.get('injury')
@@ -97,6 +100,7 @@ def ReportIncident(request):
         report = ReportIncidentModel.objects.create(location = location, incident_department = incident_department,
         date = date, time = time, incident_location = incident_location, initial_severity = initial_severity,
         suspected_cause = suspected_cause, immediate_action_taken = immediate_action, sub_incident_type = li,
+        reporting_user = username
         )
 
         report.save()
